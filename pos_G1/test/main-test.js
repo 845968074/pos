@@ -140,9 +140,9 @@ describe('pos', () => {
       'ITEM000001', 'ITEM000001', 'ITEM000001', 'ITEM000001', 'ITEM000001',
       'ITEM000002-2'];
 
-   // spyOn(console, 'log');
+   spyOn(console, 'log');
 
-    let receiptString=printReceipt(tags);
+   printReceipt(tags);
 
     const expectText =`***<没钱赚商店>购物清单***
 名称：可口可乐，数量：11瓶，单价：3.00(元)，小计：31.35(元)，优惠：1.65(元)
@@ -156,7 +156,7 @@ describe('pos', () => {
 节省：1.65(元)
 **********************`;
 
-    expect(receiptString).toEqual(expectText);
+    expect(console.log).toHaveBeenCalledWith(expectText);
   });
 
   it('should print text for items with no one has promoted', () => {
